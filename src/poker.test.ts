@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { scoreHandHighCard, scoreHandThreeOfAKind, scoreHandFourOfAKind, scoreHandFullHouse, scoreHandFlush, scoreHandStraight } from './poker';
+import { scoreHandHighCard, scoreHandThreeOfAKind, scoreHandFourOfAKind, scoreHandFullHouse, scoreHandFlush, scoreHandStraight, scoreHandStraightFlush } from './poker';
 import type { Card, Suit } from './card';
 
 const card = (value: number, suit: Suit): Card => ({ value, suit });
@@ -75,6 +75,15 @@ describe('scoreHand', () => {
     ];
 
     expect(scoreHandStraight(hand)).toBe(14);
+  });
+
+  it('returns 80 for a straight flush', () => {
+    const hand = [
+      card(5, 'CLUBS'), card(6, 'CLUBS'), card(7, 'CLUBS'),
+      card(8, 'CLUBS'), card(9, 'CLUBS'),
+    ];
+
+    expect(scoreHandStraightFlush(hand)).toBe(80);
   });
 });
 
