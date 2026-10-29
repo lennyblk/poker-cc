@@ -41,3 +41,14 @@ export const scoreHandFourOfAKind = (hand: Hand): number => {
 
   return scoreHandThreeOfAKind(hand);
 };
+
+const FULL_HOUSE_POINTS = 50;
+
+export const scoreHandFullHouse = (hand: Hand): number => {
+  if (isFullHouse(hand)) return FULL_HOUSE_POINTS;
+
+  return scoreHandFourOfAKind(hand);
+};
+
+const isFullHouse = (hand: Hand): boolean =>
+  hasSameValueCount(hand, 3) && hasSameValueCount(hand, 2);

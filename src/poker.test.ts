@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { scoreHandHighCard, scoreHandThreeOfAKind, scoreHandFourOfAKind } from './poker';
+import { scoreHandHighCard, scoreHandThreeOfAKind, scoreHandFourOfAKind, scoreHandFullHouse } from './poker';
 import type { Card, Suit } from './card';
 
 const card = (value: number, suit: Suit): Card => ({ value, suit });
