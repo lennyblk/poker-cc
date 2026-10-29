@@ -109,3 +109,13 @@ export const scoreHandStraightFlush = (hand: Hand): number => {
 
   return scoreHandStraight(hand);
 };
+
+export const scoreHands = (hands: Hand[]): number => {
+  let total = 0;
+
+  for (const hand of hands) {
+    total += scoreHandStraightFlush(hand);
+  }
+
+  return total;
+};
