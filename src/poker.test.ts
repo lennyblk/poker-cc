@@ -49,5 +49,32 @@ describe('scoreHand', () => {
 
     expect(scoreHandFlush(hand)).toBe(45);
   });
+
+  it('returns 40 for a straight', () => {
+    const hand = [
+      card(5, 'CLUBS'), card(6, 'DIAMONDS'), card(7, 'HEARTS'),
+      card(8, 'SPADES'), card(9, 'CLUBS'),
+    ];
+
+    expect(scoreHandStraight(hand)).toBe(40);
+  });
+
+  it('returns 40 for a straight ending with an ace', () => {
+    const hand = [
+      card(10, 'CLUBS'), card(11, 'DIAMONDS'), card(12, 'HEARTS'),
+      card(13, 'SPADES'), card(14, 'CLUBS'),
+    ];
+
+    expect(scoreHandStraight(hand)).toBe(40);
+  });
+
+  it('does not count ace-low as a straight', () => {
+    const hand = [
+      card(14, 'CLUBS'), card(2, 'DIAMONDS'), card(3, 'HEARTS'),
+      card(4, 'SPADES'), card(5, 'CLUBS'),
+    ];
+
+    expect(scoreHandStraight(hand)).toBe(14);
+  });
 });
 
