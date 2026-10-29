@@ -31,5 +31,14 @@ describe('scoreHand', () => {
 
     expect(scoreHandFourOfAKind(hand)).toBe(60);
   });
+
+  it('returns 50 for a full house', () => {
+    const hand = [
+      card(2, 'HEARTS'), card(2, 'CLUBS'), card(2, 'DIAMONDS'),
+      card(9, 'CLUBS'), card(9, 'SPADES'),
+    ];
+
+    expect(scoreHandFullHouse(hand)).toBe(50);
+  });
 });
 
