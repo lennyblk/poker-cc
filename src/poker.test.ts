@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { scoreHandHighCard, scoreHandThreeOfAKind, scoreHandFourOfAKind, scoreHandFullHouse, scoreHandFlush, scoreHandStraight, scoreHandStraightFlush } from './poker';
+import { scoreHandHighCard, scoreHandThreeOfAKind, scoreHandFourOfAKind, scoreHandFullHouse, scoreHandFlush, scoreHandStraight, scoreHandStraightFlush, scoreHands } from './poker';
 import type { Card, Suit } from './card';
 
 const card = (value: number, suit: Suit): Card => ({ value, suit });
@@ -102,6 +102,19 @@ describe('scoreHand', () => {
     ];
 
     expect(scoreHandStraightFlush(hand)).toBe(12);
+  });
+});
+
+describe('scoreHands', () => {
+  it('returns the sum of the points of every hand', () => {
+    const hands = [
+      [card(2, 'HEARTS'), card(2, 'SPADES'), card(2, 'DIAMONDS'), card(9, 'CLUBS'), card(9, 'SPADES')],
+      [card(5, 'CLUBS'), card(6, 'DIAMONDS'), card(7, 'HEARTS'), card(8, 'SPADES'), card(9, 'CLUBS')],
+      [card(2, 'HEARTS'), card(7, 'HEARTS'), card(9, 'HEARTS'), card(11, 'HEARTS'), card(13, 'HEARTS')],
+      [card(3, 'CLUBS'), card(8, 'DIAMONDS'), card(10, 'HEARTS'), card(12, 'SPADES'), card(13, 'CLUBS')],
+    ];
+
+    expect(scoreHands(hands)).toBe(148);
   });
 });
 
