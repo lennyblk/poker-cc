@@ -71,3 +71,32 @@ const isFlush = (hand: Hand): boolean => {
 
   return true;
 };
+
+const STRAIGHT_POINTS = 40;
+
+export const scoreHandStraight = (hand: Hand): number => {
+  if (isStraight(hand)) return STRAIGHT_POINTS;
+
+  return scoreHandFlush(hand);
+};
+
+const isStraight = (hand: Hand): boolean => {
+  const lowest = lowestCardValue(hand);
+
+  for (let value = lowest; value < lowest + 5; value++) {
+    if (!hasCardWithValue(hand, value)) return false;
+  }
+
+  return true;
+};
+
+const hasCardWithValue = (hand: Hand, value: number): boolean => {
+  for (const card of hand) {
+    if (card.value === value) return true;
+  }
+
+  return false;
+};
+
+const lowestCardValue = (hand: Hand): number =>
+  Math.min(...hand.map(c => c.value));
