@@ -40,5 +40,14 @@ describe('scoreHand', () => {
 
     expect(scoreHandFullHouse(hand)).toBe(50);
   });
+
+  it('returns 45 for a flush', () => {
+    const hand = [
+      card(2, 'HEARTS'), card(7, 'HEARTS'), card(9, 'HEARTS'),
+      card(11, 'HEARTS'), card(13, 'HEARTS'),
+    ];
+
+    expect(scoreHandFlush(hand)).toBe(45);
+  });
 });
 
