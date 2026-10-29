@@ -52,3 +52,22 @@ export const scoreHandFullHouse = (hand: Hand): number => {
 
 const isFullHouse = (hand: Hand): boolean =>
   hasSameValueCount(hand, 3) && hasSameValueCount(hand, 2);
+
+
+const FLUSH_POINTS = 45;
+
+export const scoreHandFlush = (hand: Hand): number => {
+  if (isFlush(hand)) return FLUSH_POINTS;
+
+  return scoreHandFullHouse(hand);
+};
+
+const isFlush = (hand: Hand): boolean => {
+  const firstSuit = hand[0].suit;
+
+  for (const card of hand) {
+    if (card.suit !== firstSuit) return false;
+  }
+
+  return true;
+};
