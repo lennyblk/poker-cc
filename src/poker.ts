@@ -100,3 +100,12 @@ const hasCardWithValue = (hand: Hand, value: number): boolean => {
 
 const lowestCardValue = (hand: Hand): number =>
   Math.min(...hand.map(c => c.value));
+
+
+const STRAIGHT_FLUSH_POINTS = 80;
+
+export const scoreHandStraightFlush = (hand: Hand): number => {
+  if (isStraight(hand) && isFlush(hand)) return STRAIGHT_FLUSH_POINTS;
+
+  return scoreHandStraight(hand);
+};
