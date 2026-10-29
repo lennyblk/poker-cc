@@ -85,5 +85,23 @@ describe('scoreHand', () => {
 
     expect(scoreHandStraightFlush(hand)).toBe(80);
   });
+
+  it('returns the highest card for a single pair', () => {
+    const hand = [
+      card(2, 'HEARTS'), card(2, 'CLUBS'), card(5, 'DIAMONDS'),
+      card(9, 'CLUBS'), card(13, 'SPADES'),
+    ];
+
+    expect(scoreHandStraightFlush(hand)).toBe(13);
+  });
+
+  it('returns the highest card for two pairs', () => {
+    const hand = [
+      card(2, 'HEARTS'), card(2, 'CLUBS'), card(9, 'DIAMONDS'),
+      card(9, 'CLUBS'), card(12, 'SPADES'),
+    ];
+
+    expect(scoreHandStraightFlush(hand)).toBe(12);
+  });
 });
 
